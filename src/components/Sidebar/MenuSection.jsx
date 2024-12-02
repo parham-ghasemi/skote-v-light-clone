@@ -1,0 +1,63 @@
+import { useState } from "react";
+import clsx from 'clsx'
+import { HiChevronDown, HiChevronUp } from "react-icons/hi2";
+import { IconContext } from "react-icons";
+
+
+
+export default function MenuSection({ item }) {
+
+  const [displayChildren, setDisplayChildren] = useState(false);
+
+
+  return (
+    <li className="mb-3" >
+      {
+        item ? (
+          <>
+            <p className="text-xs text-neutral-700 mb-4">{item.label}</p>
+
+            <ul className="font-normal text-neutral-300">
+              {
+                item.content && item.content.map((item) => (
+                  <li>
+                    <p className="cursor-pointer flex opacity-70 items-baseline w-full justify-between hover:opacity-100 transition-opacity" onClick={() => setDisplayChildren(prevState => !prevState)}>{
+                      item.icon ?
+                        <div className="flex items-center gap-2">
+                          <div className="h-4 w-4">
+                            <img src={item.icon} className="h-full w-full" alt="" />
+                          </div>
+                          {item.label}
+                        </div> : item.label
+                    }
+                      {
+                        item.children && (
+                          displayChildren ? (
+                            <IconContext.Provider value={{ size: '15px' }}>
+                              <HiChevronUp />
+                            </IconContext.Provider>
+                          ) : (
+                            <IconContext.Provider value={{ size: '15px' }}>
+                              <HiChevronDown />
+                            </IconContext.Provider>
+                          )
+                        )
+                      }</p>
+                    <ul className={clsx('mt-2 overflow-hidden cursor-pointer transition-[max-height] duration-200 ease-in-out flex flex-col', displayChildren ? 'max-h-[100px]' : 'max-h-0')}>
+                      {
+                        item.children && item.children.map((item) => (
+                          <i className="ml-1">{item.label}</i>
+                        ))
+                      }
+                    </ul>
+                  </li>
+                ))
+              }
+            </ul>
+
+          </>
+        ) : null
+      }
+    </li>
+  )
+}
