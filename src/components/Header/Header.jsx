@@ -16,7 +16,7 @@ export default function Header({ onHamburgerClick, onFullScreen }) {
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [appsDropDownOpen, setAppsDropDownOpen] = useState(false);
   const [languagesDropDown, setLanguagesDropDown] = useState(false);
-  const [profileDropDownOpen, setProfileDropDownOpen] = useState(true);
+  const [profileDropDownOpen, setProfileDropDownOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [currentLanguage, setCurrentLanguage] = useState(
     {
@@ -97,14 +97,14 @@ export default function Header({ onHamburgerClick, onFullScreen }) {
             }
           </div>
 
-          <div className="h-full w-28 flex gap-2 relative">
+          <div className="h-full w-28 flex gap-2 relative cursor-pointer" onClick={()=>setProfileDropDownOpen(prev=>!prev)}>
             <div className="h-8 w-8">
               <img src="/placeHolderPfp.png" alt="profile picture" />
             </div>
             <div className="flex items-center gap-1">
               <p className="text-sm">admin</p>
               <IconContext.Provider value={{ size: '10px' }}>
-                <HiChevronDown />
+                <HiChevronDown  />
               </IconContext.Provider>
             </div>
             {

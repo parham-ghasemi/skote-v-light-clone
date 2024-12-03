@@ -25,11 +25,11 @@ export default function LanguagesDropDown({ currentLanguage }) {
   ]
 
   return (
-    <div className="absolute top-[7vh] -left-[9vw] bg-neutral-50 w-40 rounded-md p-5">
-      <ul className="flex flex-col gap-3 text-sm">
+    <div className="absolute top-[8vh] -left-[9vw] bg-neutral-50 w-40 rounded-md overflow-hidden py-1">
+      <ul className="flex flex-col text-sm">
         {
           languagesList.map((item) => (
-            <li className="flex gap-2 items-center" onClick={()=>currentLanguage(item)}>
+            <li className="flex gap-2 items-center hover:bg-neutral-200 px-5 py-2" onClick={()=>currentLanguage(item)}>
               <div className="w-5">
                 {item.flag}
               </div>
