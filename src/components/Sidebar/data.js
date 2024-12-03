@@ -3,7 +3,7 @@ export const menus = [
     label: 'MENU',
     content: [
       {
-        icon:'/icons/home.svg',
+        icon: '/icons/home.svg',
         label: 'Dashboards',
         children: [
           {
@@ -34,15 +34,15 @@ export const menus = [
     label: 'APPS',
     content: [
       {
-        icon:'/icons/calendar.svg',
+        icon: '/icons/calendar.svg',
         label: 'Calendar'
       },
       {
-        icon:'/icons/chat.svg',
+        icon: '/icons/chat.svg',
         label: 'Chat'
       },
       {
-        icon:'/icons/file.svg',
+        icon: '/icons/file.svg',
         label: 'File Manager'
       },
     ]

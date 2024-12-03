@@ -5,7 +5,7 @@ import { IconContext } from "react-icons";
 
 
 
-export default function MenuSection({ item }) {
+export default function MenuSection({ item, isCollapsed }) {
 
   const [displayChildren, setDisplayChildren] = useState(false);
 
@@ -15,7 +15,10 @@ export default function MenuSection({ item }) {
       {
         item ? (
           <>
-            <p className="text-xs text-neutral-700 mb-4">{item.label}</p>
+          {
+            !isCollapsed && <p className="text-xs text-neutral-700 mb-4">{item.label}</p>
+          }
+            
 
             <ul className="font-normal text-neutral-300">
               {
@@ -24,14 +27,17 @@ export default function MenuSection({ item }) {
                     <p className="cursor-pointer flex opacity-70 items-baseline w-full justify-between hover:opacity-100 transition-opacity" onClick={() => setDisplayChildren(prevState => !prevState)}>{
                       item.icon ?
                         <div className="flex items-center gap-2">
-                          <div className="h-4 w-4">
+                          <div className={clsx(isCollapsed ? 'h-6 w-6 my-1' : 'h-4 w-4')}>
                             <img src={item.icon} className="h-full w-full" alt="" />
                           </div>
-                          {item.label}
+                          {
+                            isCollapsed ? null : item.label
+                          }
+
                         </div> : item.label
                     }
                       {
-                        item.children && (
+                        item.children && !isCollapsed && (
                           displayChildren ? (
                             <IconContext.Provider value={{ size: '15px' }}>
                               <HiChevronUp />
@@ -45,7 +51,7 @@ export default function MenuSection({ item }) {
                       }</p>
                     <ul className={clsx('mt-2 overflow-hidden cursor-pointer transition-[max-height] duration-200 ease-in-out flex flex-col', displayChildren ? 'max-h-[100px]' : 'max-h-0')}>
                       {
-                        item.children && item.children.map((item) => (
+                        item.children && !isCollapsed && item.children.map((item) => (
                           <i className="ml-1">{item.label}</i>
                         ))
                       }
