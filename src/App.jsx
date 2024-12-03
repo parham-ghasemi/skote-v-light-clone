@@ -1,7 +1,6 @@
 import { useState } from "react";
-import Sidebar from "./components/Sidebar/Index"
-import { menus } from "./components/Sidebar/data";
-import Header from "./components/Header/Header";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Default from "./pages/Default";
 
 function App() {
   const [isSideBarCollapsed, setIsSideBarCollapsed] = useState(false);
@@ -19,10 +18,13 @@ function App() {
   }
 
   return (
-    <div className="flex bg-neutral-200">
-      <Sidebar menus={menus} isCollapsed={isSideBarCollapsed} />
-      <Header onHamburgerClick={() => setIsSideBarCollapsed(prevState => !prevState)} onFullScreen={handleFullScreen} />
-    </div>
+    <>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Default handleFullScreen={handleFullScreen} isSideBarCollapsed={isSideBarCollapsed} setIsSideBarCollapsed={setIsSideBarCollapsed} />} />
+      </Routes>
+    </BrowserRouter>
+    </>
   )
 }
 

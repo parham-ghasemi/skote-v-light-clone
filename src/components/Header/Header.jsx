@@ -11,6 +11,7 @@ import LanguagesDropDown from "./dropdowns/languages/LanguagesDropDown";
 import NotifDropDown from "./dropdowns/notification/NotificationDropDown";
 import notifications from "./dropdowns/notification/data";
 import ProfileDropDown from "./dropdowns/profile/ProfileDropDown";
+import clsx from "clsx";
 
 export default function Header({ onHamburgerClick, onFullScreen }) {
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
@@ -34,7 +35,7 @@ export default function Header({ onHamburgerClick, onFullScreen }) {
 
   return (
     <>
-      <div className="bg-neutral-100 w-full h-[10vh] flex justify-between items-center px-5 text-neutral-600">
+      <div className={clsx("bg-neutral-100 h-[10vh] flex justify-between items-center px-5 text-neutral-600", sidebarOpen ? 'w-[81.5vw]' : 'w-[95vw]')}>
         <div className="flex items-center gap-5">
           <SlMenu onClick={handleSidebarColapse} className="cursor-pointer" />
 
