@@ -5,6 +5,9 @@ import { menus } from "../components/Sidebar/data";
 import Header from "../components/Header/Header";
 import clsx from "clsx";
 import { GoArrowRight } from "react-icons/go";
+import { IconContext } from "react-icons";
+import { BiPurchaseTagAlt } from "react-icons/bi";
+import { RiFileCopy2Line, RiInboxArchiveLine } from "react-icons/ri";
 
 export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSideBarCollapsed }) {
   return (
@@ -35,12 +38,12 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
                     <p className="text-blue-700 text-sm font-normal">Skote Dashboard</p>
                   </div>
                   <div className="h-full w-[43%]"><img src="/profileHeader.png" className="max-w-full max-h-full" alt="" /></div>
-                  
+
                 </div>
                 <div className="w-full h-[60%] flex">
                   <div className="h-full w-1/3 relative flex flex-col justify-end">
                     <div className="rounded-full overflow-hidden bg-neutral-100 h-16 w-16 absolute -top-[15%] left-1/2 -translate-x-1/2 flex items-center justify-center">
-                    <img src="/placeHolderPfp.png" alt="" />
+                      <img src="/placeHolderPfp.png" alt="" />
                     </div>
                     <div className="p-3 flex flex-col gap-2 h-2/3 justify-start">
                       <p className="font-semibold text-neutral-700">Henry Pri...</p>
@@ -71,9 +74,47 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
 
             <div className="flex rounded-md flex-col w-2/3 gap-5">
               <div className="h-24 rounded-md flex gap-5">
-                <div className="h-full w-1/3 bg-neutral-50 rounded-md"></div>
-                <div className="h-full w-1/3 bg-neutral-50 rounded-md"></div>
-                <div className="h-full w-1/3 bg-neutral-50 rounded-md"></div>
+                <div className="h-full w-1/3 bg-neutral-50 rounded-md flex justify-between p-5">
+                  <div className="h-full w-2/3 flex flex-col justify-between">
+                    <p className="text-sm text-neutral-500">Orders</p>
+                    <p className="font-semibold text-neutral-700 text-lg">1,235</p>
+                  </div>
+                  <div className="h-full w-1/3 flex items-center justify-center">
+                    <div className="rounded-full h-12 w-12 bg-sky-600 flex items-center justify-center">
+                      <IconContext.Provider value={{ size: '25px', color: 'white' }} >
+                        <RiFileCopy2Line />
+                      </IconContext.Provider>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="h-full w-1/3 bg-neutral-50 rounded-md flex justify-between p-5">
+                  <div className="h-full w-2/3 flex flex-col justify-between">
+                    <p className="text-sm text-neutral-500">Revenue</p>
+                    <p className="font-semibold text-neutral-700 text-lg">$35,723</p>
+                  </div>
+                  <div className="h-full w-1/3 flex items-center justify-center">
+                    <div className="rounded-full h-12 w-12 bg-sky-600 flex items-center justify-center">
+                      <IconContext.Provider value={{ size: '25px', color: 'white' }} >
+                        <RiInboxArchiveLine />
+                      </IconContext.Provider>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="h-full w-1/3 bg-neutral-50 rounded-md flex justify-between p-5">
+                  <div className="h-full w-2/3 flex flex-col justify-between">
+                    <p className="text-sm text-neutral-500">Average Price</p>
+                    <p className="font-semibold text-neutral-700 text-lg">$16.2</p>
+                  </div>
+                  <div className="h-full w-1/3 flex items-center justify-center">
+                    <div className="rounded-full h-12 w-12 bg-sky-600 flex items-center justify-center">
+                      <IconContext.Provider value={{ size: '25px', color: 'white' }} >
+                        <BiPurchaseTagAlt />
+                      </IconContext.Provider>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div className="h-[65vh] bg-neutral-50 rounded-md"></div>
             </div>
