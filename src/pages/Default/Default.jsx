@@ -10,6 +10,7 @@ import { BiPurchaseTagAlt } from "react-icons/bi";
 import { RiFileCopy2Line, RiInboxArchiveLine } from "react-icons/ri";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import barChartData from "./barChartData";
+import { FaChevronRight, FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 
 export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSideBarCollapsed }) {
@@ -200,9 +201,76 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
           </div>
 
           <div className="flex w-full gap-5">
-            <div className="w-1/3 h-96 bg-neutral-50 rounded-md"></div>
-            <div className="w-1/3 min-h-96 bg-neutral-50 rounded-md"></div>
-            <div className="w-1/3 h-96 bg-neutral-50 rounded-md"></div>
+            <div className="w-1/3 h-[62vh] bg-neutral-50 rounded-md p-4">
+              <div className="w-full h-[10%]">
+                <p className="font-bold text-lg text-neutral-700">Social Source</p>
+              </div>
+
+              <div className="flex flex-col items-center h-[60%]">
+                <div className="flex items-center justify-center w-full">
+                  <div className="flex items-center justify-center p-4 rounded-full bg-blue-100">
+                    <IconContext.Provider value={{ size: '20px', color: '#5555ff' }} >
+                      <FaFacebook />
+                    </IconContext.Provider>
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-center w-10/12 justify-evenly h-full">
+                  <p className="font-semibold text-lg text-neutral-700">Facebook - <span className="text-neutral-500">125 Sales</span></p>
+                  <p className="text-pretty text-center text-sm text-neutral-600">Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus tincidunt.</p>
+                  <a href="#" className="text-sm text-blue-600 flex items-center gap-1">
+                    Learn more
+                    <IconContext.Provider value={{ size: '8px' }}>
+                      <FaChevronRight />
+                    </IconContext.Provider>
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex w-full h-[30%] mt-3">
+                <div className="flex flex-col gap-3 w-1/3 items-center">
+                  <div className="flex items-center justify-center p-2 rounded-full bg-[#5555ff]">
+                    <IconContext.Provider value={{ size: '15px', color: '#f2f2f2' }} >
+                      <FaFacebook />
+                    </IconContext.Provider>
+                  </div>
+                  <p className="font-semibold text-md text-neutral-600">Facebook</p>
+                  <p className="text-xs text-neutral-500">125 Sales</p>
+                </div>
+
+                <div className="flex flex-col gap-3 w-1/3 items-center">
+                  <div className="flex items-center justify-center p-2 rounded-full bg-[#389fff]">
+                    <IconContext.Provider value={{ size: '15px', color: '#f2f2f2' }} >
+                      <FaTwitter />
+                    </IconContext.Provider>
+                  </div>
+                  <p className="font-semibold text-md text-neutral-600">Twitter</p>
+                  <p className="text-xs text-neutral-500">112 Sales</p>
+                </div>
+
+                <div className="flex flex-col gap-3 w-1/3 items-center">
+                  <div className="flex items-center justify-center p-2 rounded-full bg-[#dd33aa]">
+                    <IconContext.Provider value={{ size: '15px', color: '#f2f2f2' }} >
+                      <FaInstagram />
+                    </IconContext.Provider>
+                  </div>
+                  <p className="font-semibold text-md text-neutral-600">Instagram</p>
+                  <p className="text-xs text-neutral-500">104 Sales</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="w-1/3 h-96 bg-neutral-50 rounded-md p-4">
+              <div className="w-full h-[10%]">
+                <p className="font-bold text-lg text-neutral-700">Social Source</p>
+              </div>
+            </div>
+
+            <div className="w-1/3 h-96 bg-neutral-50 rounded-md p-4">
+              <div className="w-full h-[10%]">
+                <p className="font-bold text-lg text-neutral-700">Social Source</p>
+              </div>
+            </div>
           </div>
 
           <div className="w-full h-[68vh] bg-neutral-50 rounded-md"></div>
