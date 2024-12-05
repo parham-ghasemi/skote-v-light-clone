@@ -13,6 +13,7 @@ import barChartData from "./barChartData";
 import { FaArrowAltCircleRight, FaChevronRight, FaFacebook, FaInstagram, FaRegArrowAltCircleRight, FaTwitter } from "react-icons/fa";
 import { PiMapPinSimpleArea } from "react-icons/pi";
 import HorizontalPercentageVisualizer from "../../components/HorizontalPercentageVisualizer";
+import LatestTransActionsTable from "./LatestTransActionsTable";
 
 export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSideBarCollapsed }) {
   const [selectedRadioBtn, setSelectedRadioBtn] = useState('year');
@@ -397,7 +398,15 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
             </div>
           </div>
 
-          <div className="w-full h-[68vh] bg-neutral-50 rounded-md"></div>
+          <div className="w-full h-[68vh] bg-neutral-50 rounded-md p-6 flex flex-col justify-between">
+            <div className="w-full h-[10%]">
+              <p className="font-bold text-lg text-neutral-700">Latest Transactions</p>
+            </div>
+
+            <div className="w-full h-[85%] overflow-scroll">
+              <LatestTransActionsTable />
+            </div>
+          </div>
         </div>
       </main>
     </div>
