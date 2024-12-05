@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Default from "./pages/Default";
+import Default from "./pages/Default/Default";
 
 function App() {
   const [isSideBarCollapsed, setIsSideBarCollapsed] = useState(false);

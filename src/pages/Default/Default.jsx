@@ -1,15 +1,36 @@
 
-import { useState } from "react";
-import Sidebar from "../components/Sidebar/Index"
-import { menus } from "../components/Sidebar/data";
-import Header from "../components/Header/Header";
+import { useEffect, useMemo, useState } from "react";
+import Sidebar from "../../components/Sidebar/Index"
+import { menus } from "../../components/Sidebar/data";
+import Header from "../../components/Header/Header";
 import clsx from "clsx";
 import { GoArrowRight } from "react-icons/go";
 import { IconContext } from "react-icons";
 import { BiPurchaseTagAlt } from "react-icons/bi";
 import { RiFileCopy2Line, RiInboxArchiveLine } from "react-icons/ri";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import barChartData from "./barChartData";
+
 
 export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSideBarCollapsed }) {
+  const [selectedRadioBtn, setSelectedRadioBtn] = useState('year');
+
+  const handleRadioButtons = (name) => {
+    setSelectedRadioBtn(name);
+  }
+
+  const chartData = useMemo(()=>{
+    if(selectedRadioBtn === 'year'){
+      return barChartData.year;
+    }
+    if(selectedRadioBtn === 'month'){
+      return barChartData.month;
+    }
+    if(selectedRadioBtn === 'week'){
+      return barChartData.week;
+    }
+  }, [selectedRadioBtn])
+
   return (
     <div className="flex bg-neutral-200">
       <aside className="fixed">
@@ -116,7 +137,46 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
                   </div>
                 </div>
               </div>
-              <div className="h-[65vh] bg-neutral-50 rounded-md"></div>
+              <div className="h-[65vh] bg-neutral-50 rounded-md flex flex-col p-4">
+                <div className="h-[10%] font-bold flex items-center justify-between">
+                  <p className="font-bold">Emails Sent</p>
+                  <ul className="flex gap-2">
+                    <li>
+                      <input className="peer hidden" type="radio" name="time" id="week" value="week" onClick={() => handleRadioButtons('week')} checked={selectedRadioBtn === 'week' ? true : false}/>
+                      <label htmlFor="week" className="bg-sky-100 px-3 py-1 rounded text-neutral-800 peer-checked:bg-sky-600 peer-checked:text-neutral-50">week</label>
+                    </li>
+                    <li>
+                      <input className="peer hidden" type="radio" name="time" id="month" value="month"  onClick={() => handleRadioButtons('month')} checked={selectedRadioBtn === 'month' ? true : false}/>
+                      <label htmlFor="month" className="bg-sky-100 px-3 py-1 rounded text-neutral-800 peer-checked:bg-sky-600 peer-checked:text-neutral-50">Month</label>
+                    </li>
+                    <li>
+                      <input className="peer hidden" type="radio" name="time" id="year" value="year" onClick={() => handleRadioButtons('year')} checked={selectedRadioBtn === 'year' ? true : false} />
+                      <label htmlFor="year" className="bg-sky-100 px-3 py-1 rounded text-neutral-800 peer-checked:bg-sky-600 peer-checked:text-neutral-50">year</label>
+                    </li>
+                  </ul>
+                </div>
+                <div className="h-[90%] text-xs">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart
+                      width={500}
+                      height={300}
+                      data={chartData}
+                      margin={{
+                        top: 20,
+                        bottom: 10,
+                      }}
+                    >
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Bar dataKey="SeriesA" stackId="a" fill="#4444ff" barSize={7} />
+                      <Bar dataKey="SeriesB" stackId="a" fill="#ffd022" barSize={7} />
+                      <Bar dataKey="SeriesC" stackId="a" fill="#00bbbb" barSize={7} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
             </div>
           </div>
 
