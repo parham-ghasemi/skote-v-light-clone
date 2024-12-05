@@ -41,7 +41,7 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
       <main className={clsx("overflow-hidden", isSideBarCollapsed ? 'ml-[5vw]' : 'ml-[18.5vw]')}>
         <Header onHamburgerClick={() => setIsSideBarCollapsed(prevState => !prevState)} onFullScreen={handleFullScreen} />
 
-        <div className="w-full h-full p-6 gap-5 flex flex-col">
+        <div className="w-full h-full p-6 gap-5 flex flex-col mt-[10vh]">
           <div className="flex w-full justify-between">
             <p className="text-neutral-600 font-bold">DASHBOARD</p>
             <div className="flex text-sm gap-1">

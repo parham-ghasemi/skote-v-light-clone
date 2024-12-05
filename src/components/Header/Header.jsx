@@ -35,7 +35,7 @@ export default function Header({ onHamburgerClick, onFullScreen }) {
 
   return (
     <>
-      <div className={clsx("bg-neutral-100 h-[10vh] flex justify-between items-center px-5 text-neutral-600", sidebarOpen ? 'w-[81.5vw]' : 'w-[95vw]')}>
+      <div className={clsx("bg-neutral-100 h-[10vh] fixed z-50 flex justify-between items-center px-5 text-neutral-600", sidebarOpen ? 'w-[81.5vw]' : 'w-[95vw]')}>
         <div className="flex items-center gap-5">
           <SlMenu onClick={handleSidebarColapse} className="cursor-pointer" />
 
