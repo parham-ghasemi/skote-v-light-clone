@@ -4,7 +4,7 @@ import Sidebar from "../../components/Sidebar/Index"
 import { menus } from "../../components/Sidebar/data";
 import Header from "../../components/Header/Header";
 import clsx from "clsx";
-import { GoArrowRight } from "react-icons/go";
+import { GoArrowRight, GoArrowUp } from "react-icons/go";
 import { IconContext } from "react-icons";
 import { BiPurchaseTagAlt } from "react-icons/bi";
 import { RiFileCopy2Line, RiInboxArchiveLine } from "react-icons/ri";
@@ -19,14 +19,14 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
     setSelectedRadioBtn(name);
   }
 
-  const chartData = useMemo(()=>{
-    if(selectedRadioBtn === 'year'){
+  const chartData = useMemo(() => {
+    if (selectedRadioBtn === 'year') {
       return barChartData.year;
     }
-    if(selectedRadioBtn === 'month'){
+    if (selectedRadioBtn === 'month') {
       return barChartData.month;
     }
-    if(selectedRadioBtn === 'week'){
+    if (selectedRadioBtn === 'week') {
       return barChartData.week;
     }
   }, [selectedRadioBtn])
@@ -90,7 +90,26 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
                 </div>
               </div>
 
-              <div className="h-72 rounded-md bg-neutral-50"></div>
+              <div className="h-72 rounded-md bg-neutral-50 p-4">
+                <div className="">
+                  <p className="font-bold text-neutral-700 text-lg">Monthly Earning</p>
+                </div>
+                <div className="w-full h-5/6">
+                  <div className="w-1/3 flex flex-col justify-evenly h-full">
+                    <p className="text-xs text-neutral-500">This Month</p>
+                    <p className="font-semibold text-2xl text-neutral-700">$34,252</p>
+                    <p className="text-neutral-500 text-sm">
+                      <span className="text-green-500 text-sm inline-block px-1">12% <GoArrowUp className="inline" /></span>
+                      From previous period
+                    </p>
+                    <button className="bg-sky-600 hover:bg-sky-700 transition-colors text-neutral-50 text-xs px-3 py-1.5 rounded flex items-center gap-1">View More <GoArrowRight /> </button>
+                  </div>
+                  <div className=""></div>
+                </div>
+                <div className="">
+                  <p className="text-sm text-neutral-500">We craft digital, graphic and dimensional thinking.</p>
+                </div>
+              </div>
             </div>
 
             <div className="flex rounded-md flex-col w-2/3 gap-5">
@@ -142,11 +161,11 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
                   <p className="font-bold">Emails Sent</p>
                   <ul className="flex gap-2">
                     <li>
-                      <input className="peer hidden" type="radio" name="time" id="week" value="week" onClick={() => handleRadioButtons('week')} checked={selectedRadioBtn === 'week' ? true : false}/>
+                      <input className="peer hidden" type="radio" name="time" id="week" value="week" onClick={() => handleRadioButtons('week')} checked={selectedRadioBtn === 'week' ? true : false} />
                       <label htmlFor="week" className="bg-sky-100 px-3 py-1 rounded text-neutral-800 peer-checked:bg-sky-600 peer-checked:text-neutral-50">week</label>
                     </li>
                     <li>
-                      <input className="peer hidden" type="radio" name="time" id="month" value="month"  onClick={() => handleRadioButtons('month')} checked={selectedRadioBtn === 'month' ? true : false}/>
+                      <input className="peer hidden" type="radio" name="time" id="month" value="month" onClick={() => handleRadioButtons('month')} checked={selectedRadioBtn === 'month' ? true : false} />
                       <label htmlFor="month" className="bg-sky-100 px-3 py-1 rounded text-neutral-800 peer-checked:bg-sky-600 peer-checked:text-neutral-50">Month</label>
                     </li>
                     <li>
