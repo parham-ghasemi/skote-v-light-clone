@@ -11,7 +11,8 @@ import { RiFileCopy2Line, RiInboxArchiveLine } from "react-icons/ri";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import barChartData from "./barChartData";
 import { FaArrowAltCircleRight, FaChevronRight, FaFacebook, FaInstagram, FaRegArrowAltCircleRight, FaTwitter } from "react-icons/fa";
-
+import { PiMapPinSimpleArea } from "react-icons/pi";
+import HorizontalPercentageVisualizer from "../../components/HorizontalPercentageVisualizer";
 
 export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSideBarCollapsed }) {
   const [selectedRadioBtn, setSelectedRadioBtn] = useState('year');
@@ -349,10 +350,50 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
               </div>
             </div>
 
-            <div className="w-1/3 h-96 bg-neutral-50 rounded-md p-4">
+            <div className="w-1/3 h-[60vh] flex flex-col justify-between bg-neutral-50 rounded-md p-4 pb-9">
               <div className="w-full h-[10%]">
-                <p className="font-bold text-lg text-neutral-700">Social Source</p>
+                <p className="font-bold text-lg text-neutral-700">Top Cities Selling Product</p>
               </div>
+              <div className="w-full flex items-center justify-center">
+                <IconContext.Provider value={{ size: '55px', color: '#4444ee' }}>
+                  <PiMapPinSimpleArea />
+                </IconContext.Provider>
+              </div>
+              <div className="w-full flex flex-col items-center gap-2">
+                <p className="text-neutral-700 font-semibold text-2xl">1,456</p>
+                <p className="text-neutral-500 text-sm">San Francisco</p>
+              </div>
+              <ul className="flex flex-col gap-4 w-full">
+                <li className="border-b border-neutral-200 w-full flex py-1">
+                  <p className="text-neutral-700 text-sm w-2/5">San Francisco</p>
+                  <p className="text-neutral-700 w-1/5">1,456</p>
+                  <div className="w-2/5 flex items-center">
+                    <div className="w-10/12 h-1/5">
+                      <HorizontalPercentageVisualizer percent='80' color='#4444ee' />
+                    </div>
+                  </div>
+                </li>
+
+                <li className="border-b border-neutral-200 w-full flex py-1">
+                  <p className="text-neutral-700 text-sm w-2/5">Los Angeles</p>
+                  <p className="text-neutral-700 w-1/5">1,123</p>
+                  <div className="w-2/5 flex items-center">
+                    <div className="w-10/12 h-1/5">
+                      <HorizontalPercentageVisualizer percent='70' color='#00dd66' />
+                    </div>
+                  </div>
+                </li>
+
+                <li className="border-b border-neutral-200 w-full flex py-1">
+                  <p className="text-neutral-700 text-sm w-2/5">San Diego</p>
+                  <p className="text-neutral-700 w-1/5">1,026</p>
+                  <div className="w-2/5 flex items-center">
+                    <div className="w-10/12 h-1/5">
+                      <HorizontalPercentageVisualizer percent='60' color='#efaa00' />
+                    </div>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
 
