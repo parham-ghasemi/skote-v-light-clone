@@ -10,7 +10,7 @@ import { BiPurchaseTagAlt } from "react-icons/bi";
 import { RiFileCopy2Line, RiInboxArchiveLine } from "react-icons/ri";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import barChartData from "./barChartData";
-import { FaChevronRight, FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaArrowAltCircleRight, FaChevronRight, FaFacebook, FaInstagram, FaRegArrowAltCircleRight, FaTwitter } from "react-icons/fa";
 
 
 export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSideBarCollapsed }) {
@@ -260,9 +260,92 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
               </div>
             </div>
 
-            <div className="w-1/3 h-96 bg-neutral-50 rounded-md p-4">
+            <div className="w-1/3 bg-neutral-50 h-[69vh] rounded-md p-4">
               <div className="w-full h-[10%]">
-                <p className="font-bold text-lg text-neutral-700">Social Source</p>
+                <p className="font-bold text-lg text-neutral-700">Activity</p>
+              </div>
+
+              <ul className="h-[80%] flex flex-col justify-evenly gap-6 ">
+                <li className="flex gap-2">
+                  <div className="w-1/6 flex justify-center">
+                    <IconContext.Provider value={{ size: '15px', color: '#555555' }}>
+                      <FaRegArrowAltCircleRight />
+                    </IconContext.Provider>
+                  </div>
+                  <div className="w-1/6">
+                    <p className="font-semibold text-sm text-neutral-700">
+                      22 Nov
+                      <IconContext.Provider className='inline' value={{ size: '15px', color: '#4444ee' }}>
+                        <GoArrowRight />
+                      </IconContext.Provider>
+                    </p>
+                  </div>
+                  <div className="w-3/6 flex justify-center">
+                    <p className="text-sm text-neutral-600">Responded to need “Volunteer Activities”</p>
+                  </div>
+                </li>
+
+                <li className="flex gap-2">
+                  <div className="w-2/6 flex justify-center">
+                    <IconContext.Provider value={{ size: '15px', color: '#555555' }}>
+                      <FaRegArrowAltCircleRight />
+                    </IconContext.Provider>
+                  </div>
+                  <div className="w-1/6">
+                    <p className="font-semibold text-sm text-neutral-700">
+                      17 Nov
+                      <IconContext.Provider className='inline' value={{ size: '15px', color: '#4444ee' }}>
+                        <GoArrowRight />
+                      </IconContext.Provider>
+                    </p>
+                  </div>
+                  <div className=" max-w-[70%] flex justify-center">
+                    <p className="text-sm text-neutral-600 text-pretty">Everyone realizes why a new common language would be desirable... Read More</p>
+                  </div>
+                </li>
+
+                <li className="flex gap-2">
+                  <div className="w-1/6 flex justify-center animate-fade-left animate-infinite animate-ease-in-out animate-alternate">
+                    <IconContext.Provider value={{ size: '15px', color: '#4444ee' }}>
+                      <FaArrowAltCircleRight />
+                    </IconContext.Provider>
+                  </div>
+                  <div className="w-1/6">
+                    <p className="font-semibold text-sm text-neutral-700">
+                      15 Nov
+                      <IconContext.Provider className='inline ' value={{ size: '15px', color: '#4444ee' }}>
+                        <GoArrowRight />
+                      </IconContext.Provider>
+                    </p>
+                  </div>
+                  <div className="max-w-[65%] flex justify-center">
+                    <p className="text-sm text-neutral-600">Joined the group “Boardsmanship Forum”</p>
+                  </div>
+                </li>
+
+                <li className="flex gap-2">
+                  <div className="w-1/6 flex justify-center">
+                    <IconContext.Provider value={{ size: '15px', color: '#555555' }}>
+                      <FaRegArrowAltCircleRight />
+                    </IconContext.Provider>
+                  </div>
+                  <div className="w-1/6">
+                    <p className="font-semibold text-sm text-neutral-700">
+                      22 Nov
+                      <IconContext.Provider className='inline' value={{ size: '15px', color: '#4444ee' }}>
+                        <GoArrowRight />
+                      </IconContext.Provider>
+                    </p>
+                  </div>
+                  <div className="w-3/6 flex justify-center">
+                    <p className="text-sm text-neutral-600">Responded to need “In-Kind Opportunity”</p>
+                  </div>
+                </li>
+
+              </ul>
+
+              <div className="w-full flex justify-center py-4">
+                <button className="bg-sky-600 hover:bg-sky-700 transition-colors text-neutral-50 text-xs px-3 py-1.5 rounded flex items-center gap-1">View More <GoArrowRight /> </button>
               </div>
             </div>
 
