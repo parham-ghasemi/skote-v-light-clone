@@ -3,7 +3,7 @@ import notifications from "./data";
 
 export default function NotifDropDown() {
   return (
-    <div className="bg-neutral-50 absolute top-[7vh] -left-[19vw] w-72 rounded-md h-80 overflow-hidden flex flex-col justify-between">
+    <div className="bg-neutral-50 absolute top-[7vh] shadow-dropdowns -left-[19vw] w-72 rounded-md h-80 overflow-hidden flex flex-col justify-between">
       <div className="w-full h-1/6 flex items-center justify-between px-3">
         <p className="text-sm font-medium text-neutral-900">Notifications</p>
         <a href="#" className="text-xs font-light text-blue-700">View All</a>

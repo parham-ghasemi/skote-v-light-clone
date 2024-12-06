@@ -165,15 +165,15 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
                   <ul className="flex gap-2">
                     <li>
                       <input className="peer hidden" type="radio" name="time" id="week" value="week" onClick={() => handleRadioButtons('week')} checked={selectedRadioBtn === 'week' ? true : false} />
-                      <label htmlFor="week" className="bg-sky-100 px-3 py-1 rounded text-neutral-800 peer-checked:bg-sky-600 peer-checked:text-neutral-50">week</label>
+                      <label htmlFor="week" className="font-normal px-4 py-2 rounded text-neutral-800 peer-checked:bg-sky-600 peer-checked:text-neutral-50 cursor-pointer">week</label>
                     </li>
                     <li>
                       <input className="peer hidden" type="radio" name="time" id="month" value="month" onClick={() => handleRadioButtons('month')} checked={selectedRadioBtn === 'month' ? true : false} />
-                      <label htmlFor="month" className="bg-sky-100 px-3 py-1 rounded text-neutral-800 peer-checked:bg-sky-600 peer-checked:text-neutral-50">Month</label>
+                      <label htmlFor="month" className="font-normal px-4 py-2 rounded text-neutral-800 peer-checked:bg-sky-600 peer-checked:text-neutral-50 cursor-pointer">Month</label>
                     </li>
                     <li>
                       <input className="peer hidden" type="radio" name="time" id="year" value="year" onClick={() => handleRadioButtons('year')} checked={selectedRadioBtn === 'year' ? true : false} />
-                      <label htmlFor="year" className="bg-sky-100 px-3 py-1 rounded text-neutral-800 peer-checked:bg-sky-600 peer-checked:text-neutral-50">year</label>
+                      <label htmlFor="year" className="font-normal px-4 py-2 rounded text-neutral-800 peer-checked:bg-sky-600 peer-checked:text-neutral-50 cursor-pointer">year</label>
                     </li>
                   </ul>
                 </div>
@@ -192,9 +192,9 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
                       <YAxis />
                       <Tooltip />
                       <Legend />
-                      <Bar dataKey="SeriesA" stackId="a" fill="#4444ff" barSize={7} />
-                      <Bar dataKey="SeriesB" stackId="a" fill="#ffd022" barSize={7} />
-                      <Bar dataKey="SeriesC" stackId="a" fill="#00bbbb" barSize={7} />
+                      <Bar dataKey="SeriesA" stackId="a" fill="#556EE6" barSize={7} />
+                      <Bar dataKey="SeriesB" stackId="a" fill="#F1B44C" barSize={7} />
+                      <Bar dataKey="SeriesC" stackId="a" fill="#34C38F" barSize={7} />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>

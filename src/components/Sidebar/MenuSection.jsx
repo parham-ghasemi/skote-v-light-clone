@@ -16,7 +16,7 @@ export default function MenuSection({ item, isCollapsed }) {
         item ? (
           <>
           {
-            !isCollapsed && <p className="text-xs text-neutral-700 mb-4">{item.label}</p>
+            !isCollapsed && <p className="text-xs text-[#474D62] mb-4">{item.label}</p>
           }
             
 

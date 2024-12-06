@@ -1,6 +1,5 @@
 
 export default function MenuItem({ item }) {
-  console.log(item);
 
   return (
     <li className="py-1">

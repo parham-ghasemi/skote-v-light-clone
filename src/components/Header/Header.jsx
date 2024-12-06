@@ -1,7 +1,7 @@
 import { SlMagnifier, SlMenu } from "react-icons/sl";
 import { HiChevronDown, HiOutlineBell } from "react-icons/hi2";
 import { IconContext } from "react-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MegaMenu from "./dropdowns/megaMenu/MegaMenu";
 import { DE, ES, IT, RU, US } from "country-flag-icons/react/3x2"
 import { HiOutlineArrowsExpand, HiOutlineViewGridAdd } from "react-icons/hi";
@@ -14,24 +14,19 @@ import ProfileDropDown from "./dropdowns/profile/ProfileDropDown";
 import clsx from "clsx";
 
 export default function Header({ onHamburgerClick, onFullScreen }) {
-  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
-  const [appsDropDownOpen, setAppsDropDownOpen] = useState(false);
-  const [languagesDropDown, setLanguagesDropDown] = useState(false);
-  const [profileDropDownOpen, setProfileDropDownOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [currentDropdown, setCurrentDropdown] = useState(null);
   const [currentLanguage, setCurrentLanguage] = useState(
     {
       name: 'English',
       flag: <US title="Spain" />
     },
   )
-  const [notificationDropDownOpen, setNotificationDropDownOpen] = useState(false);
 
   const handleSidebarColapse = () => {
     onHamburgerClick();
     setSidebarOpen(prev => !prev);
   }
-
 
   return (
     <>
@@ -46,13 +41,13 @@ export default function Header({ onHamburgerClick, onFullScreen }) {
             <input type="text" className="bg-neutral-200 w-10/12 outline-none text-sm" placeholder="Search..." />
           </div>
 
-          <div className="flex relative items-center gap-2 cursor-pointer" onClick={() => setMegaMenuOpen(prev => !prev)}>
+          <div className="flex relative items-center gap-2 cursor-pointer" onClick={() => setCurrentDropdown(prev => prev === 'megamenu' ? null : 'megamenu')}>
             <p className="text-sm">Mega Menu</p>
             <IconContext.Provider value={{ size: '10px' }}>
               <HiChevronDown />
             </IconContext.Provider>
             {
-              megaMenuOpen && (
+              currentDropdown === 'megamenu' && (
                 <MegaMenu isSidebarOpen={sidebarOpen} />
               )
             }
@@ -61,21 +56,21 @@ export default function Header({ onHamburgerClick, onFullScreen }) {
 
         </div>
         <div className="flex relative items-center gap-6">
-          <div className="w-7 cursor-pointer" onClick={() => setLanguagesDropDown(prev => !prev)}>
+          <div className="w-7 cursor-pointer" onClick={() => setCurrentDropdown(prev => prev === 'languages' ? null : 'languages')}>
             {
               currentLanguage.flag
             }
             {
-              languagesDropDown && (
+              currentDropdown === 'languages' && (
                 <LanguagesDropDown currentLanguage={setCurrentLanguage} />
               )
             }
           </div>
           <IconContext.Provider value={{ size: '23px' }}>
-            <HiOutlineViewGridAdd className="cursor-pointer" onClick={() => setAppsDropDownOpen(prev => !prev)} />
+            <HiOutlineViewGridAdd className="cursor-pointer" onClick={() => setCurrentDropdown(prev => prev === 'apps' ? null : 'apps')} />
           </IconContext.Provider>
           {
-            appsDropDownOpen && (
+            currentDropdown === 'apps' && (
               <DropDown />
             )
           }
@@ -88,28 +83,28 @@ export default function Header({ onHamburgerClick, onFullScreen }) {
             <div className="absolute bg-red-400 text-neutral-50 rounded-full text-xs -top-3 -right-1 px-1">{notifications.length}</div>
 
             <IconContext.Provider value={{ size: '23px' }}>
-              <HiOutlineBell className="cursor-pointer animate-wiggle" onClick={() => setNotificationDropDownOpen(prev => !prev)} />
+              <HiOutlineBell className="cursor-pointer animate-wiggle" onClick={() => setCurrentDropdown(prev => prev === 'notification' ? null : 'notification')} />
             </IconContext.Provider>
 
             {
-              notificationDropDownOpen && (
+              currentDropdown === 'notification' && (
                 <NotifDropDown />
               )
             }
           </div>
 
-          <div className="h-full w-28 flex gap-2 relative cursor-pointer" onClick={()=>setProfileDropDownOpen(prev=>!prev)}>
+          <div className="h-full w-28 flex gap-2 relative cursor-pointer" onClick={() => setCurrentDropdown(prev => prev === 'profile' ? null : 'profile')}>
             <div className="h-8 w-8">
               <img src="/placeHolderPfp.png" alt="profile picture" />
             </div>
             <div className="flex items-center gap-1">
               <p className="text-sm">admin</p>
               <IconContext.Provider value={{ size: '10px' }}>
-                <HiChevronDown  />
+                <HiChevronDown />
               </IconContext.Provider>
             </div>
             {
-              profileDropDownOpen && (
+              currentDropdown === 'profile' && (
                 <ProfileDropDown />
               )
             }

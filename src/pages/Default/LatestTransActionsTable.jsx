@@ -27,7 +27,6 @@ const Component = () => {
   });
 
   function onSelectChange(action, state) {
-    console.log(action, state);
   }
 
   const COLUMNS = [
