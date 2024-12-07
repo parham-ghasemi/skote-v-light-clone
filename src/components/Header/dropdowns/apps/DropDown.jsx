@@ -1,7 +1,7 @@
 
 export default function DropDown() {
   return (
-    <div className="animate-fade-up animate-once animate-duration-200 absolute rounded-md overflow-hidden top-[8vh] shadow-dropdowns -left-[18vw] bg-neutral-50 h-[30vh] w-[23.5vw] text-sm text-neutral-500">
+    <div className="animate-fade-up animate-once animate-duration-200 absolute rounded-md overflow-hidden top-[6vh] shadow-dropdowns -left-[18vw] bg-neutral-50 h-[30vh] w-[23.5vw] text-sm text-neutral-500">
       <div className="w-full h-full flex justify-evenly">
         <div className="flex flex-col justify-evenly w-1/3 p-2">
           <div className="flex flex-col items-center gap-3 hover:border border-neutral-200 cursor-pointer w-full h-full justify-center">

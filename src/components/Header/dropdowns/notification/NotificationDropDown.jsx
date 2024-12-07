@@ -3,7 +3,7 @@ import notifications from "./data";
 
 export default function NotifDropDown() {
   return (
-    <div className="animate-fade-up animate-once animate-duration-200 bg-neutral-50 absolute top-[7vh] shadow-dropdowns -left-[19vw] w-72 rounded-md h-80 overflow-hidden flex flex-col justify-between">
+    <div className="animate-fade-up animate-once animate-duration-200 bg-neutral-50 absolute lg:top-[6.5vh] md:top-[5.5vh] top-[7.7vh] left-3 right-3 shadow-dropdowns md:-left-44 lg:-left-40 md:w-80 rounded-md h-80 overflow-hidden flex flex-col justify-between">
       <div className="w-full h-1/6 flex items-center justify-between px-3">
         <p className="text-sm font-medium text-neutral-900">Notifications</p>
         <a href="#" className="text-xs font-light text-blue-700">View All</a>

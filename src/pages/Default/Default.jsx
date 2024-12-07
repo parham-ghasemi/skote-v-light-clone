@@ -14,13 +14,11 @@ import { FaArrowAltCircleRight, FaChevronRight, FaFacebook, FaInstagram, FaRegAr
 import { PiMapPinSimpleArea } from "react-icons/pi";
 import HorizontalPercentageVisualizer from "../../components/HorizontalPercentageVisualizer";
 import LatestTransActionsTable from "./LatestTransActionsTable";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSideBarCollapsed }) {
   const [selectedRadioBtn, setSelectedRadioBtn] = useState('year');
-
-  const handleRadioButtons = (name) => {
-    setSelectedRadioBtn(name);
-  }
+  const { width } = useWindowDimensions();
 
   const chartData = useMemo(() => {
     if (selectedRadioBtn === 'year') {
@@ -36,11 +34,11 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
 
   return (
     <div className="flex bg-neutral-200">
-      <aside className="fixed">
+      <aside className="fixed z-50 lg:top-0 top-[7vh]">
         <Sidebar menus={menus} isCollapsed={isSideBarCollapsed} />
       </aside>
 
-      <main className={clsx("overflow-hidden", isSideBarCollapsed ? 'ml-[5vw]' : 'ml-[18.5vw]')}>
+      <main className={clsx("overflow-hidden", isSideBarCollapsed ? 'lg:ml-[5vw] ml-0' : 'lg:ml-[18.5vw] ml-0')}>
         <Header onHamburgerClick={() => setIsSideBarCollapsed(prevState => !prevState)} onFullScreen={handleFullScreen} />
 
         <div className="w-full h-full p-6 gap-5 flex flex-col mt-[10vh]">
@@ -53,35 +51,35 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
             </div>
           </div>
 
-          <div className="flex w-full gap-5">
-            <div className="flex flex-col w-1/3 rounded-md gap-5">
-              <div className="h-60 rounded-md bg-neutral-50 overflow-hidden">
-                <div className="w-full h-[40%] bg-slate-300 flex">
+          <div className="flex w-full gap-5 flex-col xl:flex-row">
+            <div className="flex flex-col xl:w-1/3 w-full rounded-md gap-5">
+              <div className="xl:h-60 h-96 rounded-md bg-neutral-50 overflow-hidden">
+                <div className="w-full xl:h-[40%] md:h-[60%] h-[25%] bg-slate-300 flex">
                   <div className="h-full w-[57%] flex flex-col gap-1 p-3">
                     <p className="text-blue-700 font-semibold text-lg">Welcome Back!</p>
                     <p className="text-blue-700 text-sm font-normal">Skote Dashboard</p>
                   </div>
                   <div className="h-full w-[43%]"><img src="/profileHeader.png" className="max-w-full max-h-full" alt="" /></div>
-
                 </div>
-                <div className="w-full h-[60%] flex">
+
+                <div className="w-full xl:h-[60%] md:h-[40%] h-[75%] flex md:flex-row flex-col">
                   <div className="h-full w-1/3 relative flex flex-col justify-end">
-                    <div className="rounded-full overflow-hidden bg-neutral-100 h-16 w-16 absolute -top-[15%] left-1/2 -translate-x-1/2 flex items-center justify-center">
+                    <div className="rounded-full overflow-hidden bg-neutral-100 h-16 w-16 absolute -top-[15%] xl:left-1/2 -translate-x-1/2 md:left-[15%] left-1/2 flex items-center justify-center">
                       <img src="/placeHolderPfp.png" alt="" />
                     </div>
                     <div className="p-3 flex flex-col gap-2 h-2/3 justify-start">
-                      <p className="font-semibold text-neutral-700">Henry Pri...</p>
-                      <p className="font-medium text-sm text-neutral-500">Ui/Ux Desi...</p>
+                      <p className="font-semibold text-neutral-700">Henry Price</p>
+                      <p className="font-medium text-sm text-neutral-500">Ui/Ux Designer</p>
                     </div>
                   </div>
 
-                  <div className="h-full w-2/3 pl-4 pt-4 pr-9">
+                  <div className="h-full md:w-2/3 pl-4 pt-4 pr-9">
                     <div className="flex justify-between">
                       <div className="flex flex-col gap-2">
                         <p className="text-neutral-700 font-semibold">124</p>
                         <p className="text-neutral-500 text-sm">Projects</p>
                       </div>
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-2 w-1/2 xl:w-auto">
                         <p className="text-neutral-700 font-semibold">$1245</p>
                         <p className="text-neutral-500 text-sm">Revenue</p>
                       </div>
@@ -115,14 +113,14 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
               </div>
             </div>
 
-            <div className="flex rounded-md flex-col w-2/3 gap-5">
-              <div className="h-24 rounded-md flex gap-5">
-                <div className="h-full w-1/3 bg-neutral-50 rounded-md flex justify-between p-5">
+            <div className="flex rounded-md flex-col xl:w-2/3 w-full gap-5">
+              <div className="md:h-24 h-auto flex rounded-md flex-col md:flex-row gap-5">
+                <div className="h-full md:w-1/3 w-full bg-neutral-50 rounded-md flex justify-between p-5">
                   <div className="h-full w-2/3 flex flex-col justify-between">
                     <p className="text-sm text-neutral-500">Orders</p>
                     <p className="font-semibold text-neutral-700 text-lg">1,235</p>
                   </div>
-                  <div className="h-full w-1/3 flex items-center justify-center">
+                  <div className="h-full w-1/3 flex items-center justify-end md:justify-center">
                     <div className="rounded-full h-12 w-12 bg-sky-600 flex items-center justify-center">
                       <IconContext.Provider value={{ size: '25px', color: 'white' }} >
                         <RiFileCopy2Line />
@@ -131,12 +129,12 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
                   </div>
                 </div>
 
-                <div className="h-full w-1/3 bg-neutral-50 rounded-md flex justify-between p-5">
+                <div className="h-full md:w-1/3 w-full bg-neutral-50 rounded-md flex justify-between p-5">
                   <div className="h-full w-2/3 flex flex-col justify-between">
                     <p className="text-sm text-neutral-500">Revenue</p>
                     <p className="font-semibold text-neutral-700 text-lg">$35,723</p>
                   </div>
-                  <div className="h-full w-1/3 flex items-center justify-center">
+                  <div className="h-full w-1/3 flex items-center justify-end md:justify-center">
                     <div className="rounded-full h-12 w-12 bg-sky-600 flex items-center justify-center">
                       <IconContext.Provider value={{ size: '25px', color: 'white' }} >
                         <RiInboxArchiveLine />
@@ -145,12 +143,12 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
                   </div>
                 </div>
 
-                <div className="h-full w-1/3 bg-neutral-50 rounded-md flex justify-between p-5">
+                <div className="h-full md:w-1/3 w-full bg-neutral-50 rounded-md flex justify-between p-5">
                   <div className="h-full w-2/3 flex flex-col justify-between">
                     <p className="text-sm text-neutral-500">Average Price</p>
                     <p className="font-semibold text-neutral-700 text-lg">$16.2</p>
                   </div>
-                  <div className="h-full w-1/3 flex items-center justify-center">
+                  <div className="h-full w-1/3 flex items-center justify-end md:justify-center">
                     <div className="rounded-full h-12 w-12 bg-sky-600 flex items-center justify-center">
                       <IconContext.Provider value={{ size: '25px', color: 'white' }} >
                         <BiPurchaseTagAlt />
@@ -159,20 +157,21 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
                   </div>
                 </div>
               </div>
-              <div className="h-[65vh] bg-neutral-50 rounded-md flex flex-col p-4">
+
+              <div className="md:h-[65vh] h-[50vh] bg-neutral-50 rounded-md flex flex-col p-4">
                 <div className="h-[10%] font-bold flex items-center justify-between">
                   <p className="font-bold">Emails Sent</p>
                   <ul className="flex gap-2">
                     <li>
-                      <input className="peer hidden" type="radio" name="time" id="week" value="week" onClick={() => handleRadioButtons('week')} checked={selectedRadioBtn === 'week' ? true : false} />
+                      <input className="peer hidden" type="radio" name="time" id="week" value="week" onClick={() => setSelectedRadioBtn('week')} checked={selectedRadioBtn === 'week' ? true : false} />
                       <label htmlFor="week" className="font-normal px-4 py-2 rounded text-neutral-800 peer-checked:bg-sky-600 peer-checked:text-neutral-50 cursor-pointer">week</label>
                     </li>
                     <li>
-                      <input className="peer hidden" type="radio" name="time" id="month" value="month" onClick={() => handleRadioButtons('month')} checked={selectedRadioBtn === 'month' ? true : false} />
+                      <input className="peer hidden" type="radio" name="time" id="month" value="month" onClick={() => setSelectedRadioBtn('month')} checked={selectedRadioBtn === 'month' ? true : false} />
                       <label htmlFor="month" className="font-normal px-4 py-2 rounded text-neutral-800 peer-checked:bg-sky-600 peer-checked:text-neutral-50 cursor-pointer">Month</label>
                     </li>
                     <li>
-                      <input className="peer hidden" type="radio" name="time" id="year" value="year" onClick={() => handleRadioButtons('year')} checked={selectedRadioBtn === 'year' ? true : false} />
+                      <input className="peer hidden" type="radio" name="time" id="year" value="year" onClick={() => setSelectedRadioBtn('year')} checked={selectedRadioBtn === 'year' ? true : false} />
                       <label htmlFor="year" className="font-normal px-4 py-2 rounded text-neutral-800 peer-checked:bg-sky-600 peer-checked:text-neutral-50 cursor-pointer">year</label>
                     </li>
                   </ul>
@@ -202,8 +201,8 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
             </div>
           </div>
 
-          <div className="flex w-full gap-5">
-            <div className="w-1/3 h-[62vh] bg-neutral-50 rounded-md p-4">
+          <div className="flex w-full flex-col xl:flex-row  gap-5">
+            <div className="xl:w-1/3 w-full h-[414px] bg-neutral-50 rounded-md p-4">
               <div className="w-full h-[10%]">
                 <p className="font-bold text-lg text-neutral-700">Social Source</p>
               </div>
@@ -262,7 +261,7 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
               </div>
             </div>
 
-            <div className="w-1/3 bg-neutral-50 h-[69vh] rounded-md p-4">
+            <div className="xl:w-1/3 w-full bg-neutral-50 h-[468px] rounded-md p-4">
               <div className="w-full h-[10%]">
                 <p className="font-bold text-lg text-neutral-700">Activity</p>
               </div>
@@ -288,7 +287,7 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
                 </li>
 
                 <li className="flex gap-2">
-                  <div className="w-2/6 flex justify-center">
+                  <div className="w-1/6 flex justify-center">
                     <IconContext.Provider value={{ size: '15px', color: '#555555' }}>
                       <FaRegArrowAltCircleRight />
                     </IconContext.Provider>
@@ -301,7 +300,7 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
                       </IconContext.Provider>
                     </p>
                   </div>
-                  <div className=" max-w-[70%] flex justify-center">
+                  <div className="w-4/6 flex justify-center">
                     <p className="text-sm text-neutral-600 text-pretty">Everyone realizes why a new common language would be desirable... Read More</p>
                   </div>
                 </li>
@@ -351,7 +350,7 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
               </div>
             </div>
 
-            <div className="w-1/3 h-[60vh] flex flex-col justify-between bg-neutral-50 rounded-md p-4 pb-9">
+            <div className="xl:w-1/3 w-full h-[406px] flex flex-col justify-between bg-neutral-50 rounded-md p-4 pb-9">
               <div className="w-full h-[10%]">
                 <p className="font-bold text-lg text-neutral-700">Top Cities Selling Product</p>
               </div>
@@ -398,12 +397,12 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
             </div>
           </div>
 
-          <div className="w-full h-[68vh] bg-neutral-50 rounded-md p-6 flex flex-col justify-between">
+          <div className="w-full h-[446px] bg-neutral-50 rounded-md p-6 flex flex-col justify-between overflow-x-scroll">
             <div className="w-full h-[10%]">
               <p className="font-bold text-lg text-neutral-700">Latest Transactions</p>
             </div>
 
-            <div className="w-full h-[85%] overflow-scroll">
+            <div className="lg:w-full w-[950px] h-[85%] overflow-scroll">
               <LatestTransActionsTable />
             </div>
           </div>

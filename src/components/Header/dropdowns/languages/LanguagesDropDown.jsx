@@ -25,7 +25,7 @@ export default function LanguagesDropDown({ currentLanguage }) {
   ]
 
   return (
-    <div className="animate-fade-up animate-once animate-duration-200 absolute top-[8vh] -left-[9vw] shadow-dropdowns bg-neutral-50 w-40 rounded-md overflow-hidden py-1">
+    <div className="animate-fade-up animate-once animate-duration-200 absolute lg:top-[6.5vh] md:top-[5.5vh] top-[7.5vh] md:-left-24 lg:-left-32 left-3 right-3 md:right-0 shadow-dropdowns bg-neutral-50 md:w-40 rounded-md overflow-hidden py-1">
       <ul className="flex flex-col text-sm">
         {
           languagesList.map((item) => (

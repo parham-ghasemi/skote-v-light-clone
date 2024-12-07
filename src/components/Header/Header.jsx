@@ -30,18 +30,18 @@ export default function Header({ onHamburgerClick, onFullScreen }) {
 
   return (
     <>
-      <div className={clsx("bg-neutral-100 h-[10vh] fixed z-50 flex justify-between items-center px-5 text-neutral-600", sidebarOpen ? 'w-[81.5vw]' : 'w-[95vw]')}>
+      <div className={clsx("bg-neutral-100 lg:h-[10vh] h-[7.5vh] fixed z-50 flex justify-between items-center px-5 text-neutral-600", sidebarOpen ? 'lg:w-[81.5vw] w-full' : 'lg:w-[95vw] w-full')}>
         <div className="flex items-center gap-5">
           <SlMenu onClick={handleSidebarColapse} className="cursor-pointer" />
 
-          <div className="bg-neutral-200 h-9 w-72 rounded-full flex items-center overflow-hidden">
+          <div className="bg-neutral-200 h-9 w-72 rounded-full lg:flex items-center overflow-hidden hidden">
             <div className="w-2/12 flex justify-center items-center">
               <SlMagnifier />
             </div>
             <input type="text" className="bg-neutral-200 w-10/12 outline-none text-sm" placeholder="Search..." />
           </div>
 
-          <div className="flex relative items-center gap-2 cursor-pointer" onClick={() => setCurrentDropdown(prev => prev === 'megamenu' ? null : 'megamenu')}>
+          <div className="lg:flex hidden relative items-center gap-2 cursor-pointer" onClick={() => setCurrentDropdown(prev => prev === 'megamenu' ? null : 'megamenu')}>
             <p className="text-sm">Mega Menu</p>
             <IconContext.Provider value={{ size: '10px' }}>
               <HiChevronDown />
@@ -52,10 +52,13 @@ export default function Header({ onHamburgerClick, onFullScreen }) {
               )
             }
           </div>
-
-
         </div>
-        <div className="flex relative items-center gap-6">
+
+        <div className="flex md:relative items-center gap-6">
+          <IconContext.Provider value={{ size: '18px' }}>
+            <SlMagnifier className="cursor-pointer lg:hidden block" onClick={() => setCurrentDropdown(prev => prev === 'apps' ? null : 'apps')} />
+          </IconContext.Provider>
+
           <div className="w-7 cursor-pointer" onClick={() => setCurrentDropdown(prev => prev === 'languages' ? null : 'languages')}>
             {
               currentLanguage.flag
@@ -67,7 +70,7 @@ export default function Header({ onHamburgerClick, onFullScreen }) {
             }
           </div>
           <IconContext.Provider value={{ size: '23px' }}>
-            <HiOutlineViewGridAdd className="cursor-pointer" onClick={() => setCurrentDropdown(prev => prev === 'apps' ? null : 'apps')} />
+            <HiOutlineViewGridAdd className="cursor-pointer hidden lg:block" onClick={() => setCurrentDropdown(prev => prev === 'apps' ? null : 'apps')} />
           </IconContext.Provider>
           {
             currentDropdown === 'apps' && (
@@ -76,28 +79,28 @@ export default function Header({ onHamburgerClick, onFullScreen }) {
           }
 
           <IconContext.Provider value={{ size: '23px' }} >
-            <HiOutlineArrowsExpand onClick={onFullScreen} className="cursor-pointer" />
+            <HiOutlineArrowsExpand onClick={onFullScreen} className="cursor-pointer hidden lg:block" />
           </IconContext.Provider>
 
           <div className="relative">
-            <div className="absolute bg-red-400 text-neutral-50 rounded-full text-xs -top-3 -right-1 px-1">{notifications.length}</div>
+            <div className="absolute  bg-red-400 text-neutral-50 rounded-full text-xs -top-3 -right-1 px-1">{notifications.length}</div>
 
             <IconContext.Provider value={{ size: '23px' }}>
               <HiOutlineBell className="cursor-pointer animate-wiggle" onClick={() => setCurrentDropdown(prev => prev === 'notification' ? null : 'notification')} />
             </IconContext.Provider>
 
-            {
-              currentDropdown === 'notification' && (
-                <NotifDropDown />
-              )
-            }
           </div>
+          {
+            currentDropdown === 'notification' && (
+              <NotifDropDown />
+            )
+          }
 
-          <div className="h-full w-28 flex gap-2 relative cursor-pointer" onClick={() => setCurrentDropdown(prev => prev === 'profile' ? null : 'profile')}>
+          <div className="h-full lg:w-28 w-8 flex gap-2 md:relative cursor-pointer" onClick={() => setCurrentDropdown(prev => prev === 'profile' ? null : 'profile')}>
             <div className="h-8 w-8">
               <img src="/placeHolderPfp.png" alt="profile picture" />
             </div>
-            <div className="flex items-center gap-1">
+            <div className="lg:flex hidden items-center gap-1">
               <p className="text-sm">admin</p>
               <IconContext.Provider value={{ size: '10px' }}>
                 <HiChevronDown />

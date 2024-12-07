@@ -19,6 +19,13 @@ const Component = () => {
         --data-table-library_grid-template-columns:  44px repeat(5, minmax(0, 1fr));
         height: 100%;
       `,
+      Row: `
+        font-size: 0.8rem;
+      `,
+      HeaderRow: `
+        font-size: 0.8rem;
+        background-color: #EFF2F7;
+      `,
     },
   ]);
 
