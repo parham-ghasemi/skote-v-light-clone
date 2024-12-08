@@ -56,7 +56,7 @@ export default function Header({ onHamburgerClick, onFullScreen }) {
 
         <div className="flex md:relative items-center gap-6">
           <IconContext.Provider value={{ size: '18px' }}>
-            <SlMagnifier className="cursor-pointer lg:hidden block" onClick={() => setCurrentDropdown(prev => prev === 'apps' ? null : 'apps')} />
+            <SlMagnifier className="cursor-pointer lg:hidden block" />
           </IconContext.Provider>
 
           <div className="w-7 cursor-pointer" onClick={() => setCurrentDropdown(prev => prev === 'languages' ? null : 'languages')}>
