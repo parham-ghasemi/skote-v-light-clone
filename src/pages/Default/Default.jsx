@@ -9,12 +9,13 @@ import { IconContext } from "react-icons";
 import { BiPurchaseTagAlt } from "react-icons/bi";
 import { RiFileCopy2Line, RiInboxArchiveLine } from "react-icons/ri";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import barChartData from "./barChartData";
+import barChartData from "./data/barChartData";
 import { FaArrowAltCircleRight, FaChevronRight, FaFacebook, FaInstagram, FaRegArrowAltCircleRight, FaTwitter } from "react-icons/fa";
 import { PiMapPinSimpleArea } from "react-icons/pi";
 import HorizontalPercentageVisualizer from "../../components/HorizontalPercentageVisualizer";
-import LatestTransActionsTable from "./LatestTransActionsTable";
+import LatestTransActionsTable from "./components/LatestTransActionsTable";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
+import DashedProgressCircle from "./components/DashedProgressCircle";
 
 export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSideBarCollapsed }) {
   const [selectedRadioBtn, setSelectedRadioBtn] = useState('year');
@@ -91,12 +92,12 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
                 </div>
               </div>
 
-              <div className="h-72 rounded-md bg-neutral-50 p-4">
+              <div className="min-h-72 flex flex-col justify-evenly rounded-md bg-neutral-50 p-4">
                 <div className="">
                   <p className="font-bold text-neutral-700 text-lg">Monthly Earning</p>
                 </div>
-                <div className="w-full h-5/6">
-                  <div className="w-1/3 flex flex-col justify-evenly h-full">
+                <div className="w-full h-5/6 flex">
+                  <div className="w-1/3 flex flex-col justify-evenly">
                     <p className="text-xs text-neutral-500">This Month</p>
                     <p className="font-semibold text-2xl text-neutral-700">$34,252</p>
                     <p className="text-neutral-500 text-sm">
@@ -105,7 +106,9 @@ export default function Default({ handleFullScreen, isSideBarCollapsed, setIsSid
                     </p>
                     <button className="bg-sky-600 hover:bg-sky-700 transition-colors text-neutral-50 text-xs px-3 py-1.5 rounded flex items-center gap-1">View More <GoArrowRight /> </button>
                   </div>
-                  <div className=""></div>
+                  <div className="w-2/3 h-full">
+                    <DashedProgressCircle percentage={67}  label={'Series A'} />
+                  </div>
                 </div>
                 <div className="">
                   <p className="text-sm text-neutral-500">We craft digital, graphic and dimensional thinking.</p>

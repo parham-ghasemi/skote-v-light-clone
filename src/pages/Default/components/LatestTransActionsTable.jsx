@@ -5,7 +5,7 @@ import { useTheme } from "@table-library/react-table-library/theme";
 import { getTheme } from "@table-library/react-table-library/baseline";
 import { useRowSelect } from "@table-library/react-table-library/select";
 
-import nodes from "./tableData";
+import nodes from "../data/tableData";
 import { IconContext } from "react-icons";
 import { FaCcMastercard, FaCcPaypal, FaCcVisa } from "react-icons/fa";
 
